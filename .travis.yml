@@ -1,6 +1,6 @@
 sudo: required
 
-language: php
+language: ruby
 
 services:
   - docker
@@ -9,16 +9,18 @@ install:
   - docker run -it -v $PWD:/e2e -w /e2e -e CYPRESS_RECORD_KEY="key_of_your_dashboard" cypress/included:3.4.0 --record
   # Put the key of your Cypress dashboard on CYPRESS_RECORD_KEY variable without ""
   
-before-script:
 env:
-    - TEST_SUITE=units
-  global:
-    - CI_NODE_TOTAL=2
-  matrix:
-    - CI_NODE_INDEX=0
-    - CI_NODE_INDEX=1
-    
+    - TEST_SUITE=integration
+#  global:
+#    - CI_NODE_TOTAL=2
+#  matrix:
+#    - CI_NODE_INDEX=0
+#    - CI_NODE_INDEX=1
+
 script: "bundle exec rake test:$TEST_SUITE"
+
+#script:
+#  - bundle exec rake test
 
 notifications: 
   email:
