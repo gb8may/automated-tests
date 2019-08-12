@@ -11,4 +11,4 @@ WORKDIR /e2e
 COPY ./cypress/cypress.json /e2e
 
 # Run tests
-CMD ["./node_modules/.bin/cypress", "run" ]
+CMD ["./node_modules/.bin/cypress", "run", "--record", "--key bda27b52-019f-4fe1-a879-20202a07f99d"]
